@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Spinner
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="50dp"
+        android:id="@+id/spinnerFrom"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/spinnerFrom"
+        app:layout_constraintTop_toTopOf="@id/spinnerFrom"
+        app:layout_constraintBottom_toBottomOf="@id/spinnerFrom"
+        android:layout_marginStart="24dp"
+        android:src="@drawable/ic_currency_exchange"
+        android:contentDescription="@string/swipe_button"
+        android:id="@+id/btnSwipe"/>
+
+    <Spinner
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/btnSwipe"
+        app:layout_constraintTop_toTopOf="@id/spinnerFrom"
+        android:layout_marginStart="24dp"
+        android:id="@+id/spinnerTo"/>
+
+    <EditText
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/spinnerFrom"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/edit_text_bg"
+        android:inputType="numberSigned"
+        android:imeOptions="actionDone"
+        android:hint="@string/from_currency_hint"
+        android:autofillHints="From Currency Hint"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:id="@+id/editFrom"/>
+
+
+    <EditText
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/spinnerTo"
+        app:layout_constraintTop_toBottomOf="@id/spinnerTo"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/edit_text_bg"
+        android:enabled="false"
+        android:inputType="numberSigned"
+        android:autofillHints="To Currency Hint"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:id="@+id/editTo"/>
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editFrom"
+        android:layout_marginTop="40dp"
+        android:text="@string/details"
+        android:background="#BABCBC"
+        android:id="@+id/btnDetails"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

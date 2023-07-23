@@ -1,5 +1,6 @@
 package com.ahmed.abobakr.currencyapp
 
+import android.content.pm.ActivityInfo
 import android.view.inputmethod.EditorInfo
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
@@ -19,6 +20,26 @@ class HomeTest {
 
     @Test
     fun displayAppDesignTest(){
+        assertDisplayed(R.id.spinnerFrom)
+        assertDisplayed(R.id.btnSwipe)
+        assertDisplayed(R.id.spinnerTo)
+        onView(withId(R.id.editFrom))
+            .check(matches(isDisplayed()))
+            .check(matches(hasImeAction(EditorInfo.IME_ACTION_DONE)))
+            .check(matches(withHint("1")))
+
+        onView(withId(R.id.editTo))
+            .check(matches(isDisplayed()))
+
+        assertDisplayed(R.id.btnDetails)
+    }
+
+    @Test
+    fun displayAppDesignOnLandscape(){
+        mActivityRule.scenario.onActivity { activity ->
+            activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+        }
+
         assertDisplayed(R.id.spinnerFrom)
         assertDisplayed(R.id.btnSwipe)
         assertDisplayed(R.id.spinnerTo)
