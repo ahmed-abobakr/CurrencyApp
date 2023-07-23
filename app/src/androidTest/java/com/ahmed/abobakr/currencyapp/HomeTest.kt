@@ -26,6 +26,11 @@ class HomeTest {
             .check(matches(isDisplayed()))
             .check(matches(hasImeAction(EditorInfo.IME_ACTION_DONE)))
             .check(matches(withHint("1")))
+
+        onView(withId(R.id.editTo))
+            .check(matches(isDisplayed()))
+
+        assertDisplayed(R.id.btnDetails)
     }
 
 }

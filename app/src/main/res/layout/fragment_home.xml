@@ -50,5 +50,31 @@
         android:id="@+id/editFrom"/>
 
 
+    <EditText
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/spinnerTo"
+        app:layout_constraintTop_toBottomOf="@id/spinnerTo"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/edit_text_bg"
+        android:enabled="false"
+        android:inputType="numberSigned"
+        android:autofillHints="To Currency Hint"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:id="@+id/editTo"/>
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editFrom"
+        android:layout_marginTop="32dp"
+        android:text="@string/details"
+        android:background="#BABCBC"
+        android:id="@+id/btnDetails"/>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
