@@ -24,6 +24,14 @@
         android:contentDescription="@string/swipe_button"
         android:id="@+id/btnSwipe"/>
 
+    <Spinner
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/btnSwipe"
+        app:layout_constraintTop_toTopOf="@id/spinnerFrom"
+        android:layout_marginStart="24dp"
+        android:id="@+id/spinnerTo"/>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

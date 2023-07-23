@@ -17,6 +17,7 @@ class HomeTest {
     fun displayAppDesignTest(){
         assertDisplayed(R.id.spinnerFrom)
         assertDisplayed(R.id.btnSwipe)
+        assertDisplayed(R.id.spinnerTo)
     }
 
 }
