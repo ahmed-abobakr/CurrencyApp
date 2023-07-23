@@ -1,5 +1,9 @@
 package com.ahmed.abobakr.currencyapp
 
+import android.view.inputmethod.EditorInfo
+import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.adevinta.android.barista.assertion.BaristaVisibilityAssertions.assertDisplayed
@@ -18,6 +22,10 @@ class HomeTest {
         assertDisplayed(R.id.spinnerFrom)
         assertDisplayed(R.id.btnSwipe)
         assertDisplayed(R.id.spinnerTo)
+        onView(withId(R.id.editFrom))
+            .check(matches(isDisplayed()))
+            .check(matches(hasImeAction(EditorInfo.IME_ACTION_DONE)))
+            .check(matches(withHint("1")))
     }
 
 }
