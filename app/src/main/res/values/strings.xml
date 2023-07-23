@@ -3,4 +3,32 @@
     <string name="swipe_button">Swipe Button</string>
     <string name="from_currency_hint">1</string>
     <string name="details">Details</string>
+
+    <array name="currencies_From">
+        <item>From</item>
+        <item>EGP</item>
+        <item>USD</item>
+        <item>EUR</item>
+        <item>GBP</item>
+        <item>JPY</item>
+        <item>CAD</item>
+        <item>KWD</item>
+        <item>SAR</item>
+        <item>QAR</item>
+        <item>AED</item>
+    </array>
+
+    <array name="currencies_To">
+        <item>To</item>
+        <item>EGP</item>
+        <item>USD</item>
+        <item>EUR</item>
+        <item>GBP</item>
+        <item>JPY</item>
+        <item>CAD</item>
+        <item>KWD</item>
+        <item>SAR</item>
+        <item>QAR</item>
+        <item>AED</item>
+    </array>
 </resources>
