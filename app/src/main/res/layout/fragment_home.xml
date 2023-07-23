@@ -13,6 +13,17 @@
         android:layout_marginTop="180dp"
         android:id="@+id/spinnerFrom"/>
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/spinnerFrom"
+        app:layout_constraintTop_toTopOf="@id/spinnerFrom"
+        app:layout_constraintBottom_toBottomOf="@id/spinnerFrom"
+        android:layout_marginStart="24dp"
+        android:src="@drawable/ic_currency_exchange"
+        android:contentDescription="@string/swipe_button"
+        android:id="@+id/btnSwipe"/>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

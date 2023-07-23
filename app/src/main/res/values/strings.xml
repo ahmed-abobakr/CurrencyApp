@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">CurrencyApp</string>
+    <string name="swipe_button">Swipe Button</string>
 </resources>
