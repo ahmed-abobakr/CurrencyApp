@@ -12,11 +12,9 @@ import com.ahmed.abobakr.currencyapp.R
 import com.ahmed.abobakr.currencyapp.base.BaseFragment
 import com.ahmed.abobakr.currencyapp.base.UiState
 import com.ahmed.abobakr.currencyapp.databinding.FragmentHomeBinding
-import com.ahmed.abobakr.currencyapp.home.data.ConvertCurrencyResponse
 import com.ahmed.abobakr.currencyapp.home.viewmodels.HomeUiState
 import com.ahmed.abobakr.currencyapp.home.viewmodels.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import java.text.DecimalFormat
 
 @AndroidEntryPoint
 class HomeFragment: BaseFragment<HomeViewModel>() {
@@ -46,7 +44,7 @@ class HomeFragment: BaseFragment<HomeViewModel>() {
         binding.editFrom.setOnEditorActionListener { _, actionId, _ ->
             if(actionId == EditorInfo.IME_ACTION_DONE){
                 viewModel.convertBetweenCurrencies(binding.spinnerFrom.selectedItem.toString(), binding.spinnerTo.selectedItem.toString(),
-                            binding.editFrom.text.toString().toInt())
+                            binding.editFrom.text.toString().toDouble())
             }
             false
         }
@@ -55,16 +53,13 @@ class HomeFragment: BaseFragment<HomeViewModel>() {
     override fun render(state: UiState) {
         when(state){
             is HomeUiState.Success -> {
-                displayConvertCurrencyResult(state.result)
+                binding.editTo.setText(state.result)
             }
 
             is UiState.Error -> Toast.makeText(requireContext(), state.message, Toast.LENGTH_LONG).show()
         }
     }
 
-    private fun displayConvertCurrencyResult(data: ConvertCurrencyResponse){
-        val decimalFormat = DecimalFormat("#.##")
-        binding.editTo.setText(decimalFormat.format(data.result))
-    }
+
 
 }

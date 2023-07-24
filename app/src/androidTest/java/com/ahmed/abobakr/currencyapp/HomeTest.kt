@@ -61,14 +61,14 @@ class HomeTest {
     @Test
     fun selectSpinnerAndChangeEditTextValueShouldDisplayCurrencyValue(){
         onView(withId(R.id.spinnerFrom)).perform(click())
-        onData(allOf(instanceOf(String::class.java))).atPosition(1).perform(click())
+        onData(allOf(instanceOf(String::class.java))).atPosition(2).perform(click())
 
         onView(withId(R.id.spinnerTo)).perform(click())
-        onData(allOf(instanceOf(String::class.java))).atPosition(2).perform(click())
+        onData(allOf(instanceOf(String::class.java))).atPosition(1).perform(click())
 
         onView(withId(R.id.editFrom)).perform(typeText("100")).perform(pressImeActionButton())
         Thread.sleep(1000)
-        onView(withId(R.id.editTo)).check(matches(withText("3.25")))
+        onView(withId(R.id.editTo)).check(matches(withText("110.63")))
     }
 
 }

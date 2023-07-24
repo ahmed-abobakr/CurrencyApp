@@ -2,12 +2,35 @@ package com.ahmed.abobakr.currencyapp.base
 
 import com.google.gson.Gson
 import kotlinx.coroutines.TimeoutCancellationException
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.ResponseBody.Companion.toResponseBody
 import retrofit2.HttpException
+import retrofit2.Response
 import java.net.SocketTimeoutException
 
 open class BaseRepository {
 
-    protected fun handleException(throwable: Throwable) {
+    protected suspend fun <T> networkHandler(fetch: suspend () -> T): T? {
+        try {
+            val response = fetch.invoke()
+            if ((response as BaseResponse).success)
+                return response
+            else {
+                throw  HttpException(
+                    Response.error<Any>(
+                        500,
+                        response.toString().toResponseBody("application/json".toMediaTypeOrNull())
+                    )
+                )
+            }
+        } catch (throwable: Throwable) {
+            throwable.printStackTrace()
+            handleException(throwable)
+        }
+        return null
+    }
+
+    private fun handleException(throwable: Throwable) {
         when (throwable) {
             is TimeoutCancellationException -> {
                 throw NetworkException("The connection has timed out.")
@@ -38,6 +61,7 @@ open class BaseRepository {
                 BaseResponse::class.java
             ).error?.info ?: ""
         } catch (exception: Exception) {
+            exception.printStackTrace()
             UNKNOWN_ERROR
         }
     }

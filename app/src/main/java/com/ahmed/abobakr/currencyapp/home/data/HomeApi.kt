@@ -6,7 +6,7 @@ import retrofit2.http.Query
 
 interface HomeApi {
 
-    @GET("convert")
-    suspend fun convertBetweenCurrencies(@Query("from") from: String, @Query("to")to: String, @Query("amount")amount: Int,
-                                 @Query("access_key") key: String = BuildConfig.API_KEY): ConvertCurrencyResponse
+    @GET("latest")
+    suspend fun convertBetweenCurrencies(@Query("base") from: String, @Query("symbols")to: String,
+                                 @Query("access_key") key: String = BuildConfig.API_KEY): LatestCurrencyChangeResponse
 }

@@ -1,5 +1,6 @@
 package com.ahmed.abobakr.currencyapp.base
 
+import com.ahmed.abobakr.currencyapp.home.data.ConvertCurrencyMapper
 import com.ahmed.abobakr.currencyapp.home.data.HomeApi
 import dagger.Module
 import dagger.Provides
@@ -19,11 +20,15 @@ class AppModule {
     private val client = OkHttpClient.Builder().addInterceptor(logger).build()
 
     @Provides
+    fun provideConvertCurrenctMapper() = ConvertCurrencyMapper()
+
+    @Provides
     fun provideHomeAPI(retrofit: Retrofit): HomeApi = retrofit.create(HomeApi::class.java)
+
 
     @Provides
     fun retrofit() = Retrofit.Builder()
-        .baseUrl("https://data.fixer.io/api/")
+        .baseUrl("http://data.fixer.io/api/")
         .client(client)
         .addConverterFactory(GsonConverterFactory.create())
         .build()

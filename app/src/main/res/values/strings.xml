@@ -6,29 +6,21 @@
 
     <array name="currencies_From">
         <item>From</item>
-        <item>EGP</item>
         <item>USD</item>
         <item>EUR</item>
-        <item>GBP</item>
-        <item>JPY</item>
+        <item>AUD</item>
+        <item>PLN</item>
         <item>CAD</item>
-        <item>KWD</item>
-        <item>SAR</item>
-        <item>QAR</item>
-        <item>AED</item>
+        <item>MXN</item>
     </array>
 
     <array name="currencies_To">
         <item>To</item>
-        <item>EGP</item>
         <item>USD</item>
         <item>EUR</item>
-        <item>GBP</item>
-        <item>JPY</item>
+        <item>AUD</item>
+        <item>PLN</item>
         <item>CAD</item>
-        <item>KWD</item>
-        <item>SAR</item>
-        <item>QAR</item>
-        <item>AED</item>
+        <item>MXN</item>
     </array>
 </resources>

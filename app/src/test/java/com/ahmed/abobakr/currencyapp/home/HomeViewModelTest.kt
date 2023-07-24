@@ -3,7 +3,6 @@ package com.ahmed.abobakr.currencyapp.home
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.ahmed.abobakr.currencyapp.base.NetworkException
 import com.ahmed.abobakr.currencyapp.base.UiState
-import com.ahmed.abobakr.currencyapp.home.data.ConvertCurrencyResponse
 import com.ahmed.abobakr.currencyapp.home.data.HomeRepository
 import com.ahmed.abobakr.currencyapp.home.viewmodels.HomeUiState
 import com.ahmed.abobakr.currencyapp.home.viewmodels.HomeViewModel
@@ -43,9 +42,9 @@ class HomeViewModelTest {
         runBlocking {
             //Arrange
             //Act
-            viewModel.convertBetweenCurrencies("EGP", "USD", 100)
+            viewModel.convertBetweenCurrencies("EGP", "USD", 100.0)
             //Assert
-            verify(repo, times(1)).convertBetweenCurrencies("EGP", "USD", 100)
+            verify(repo, times(1)).convertBetweenCurrencies("EGP", "USD")
         }
     }
 
@@ -53,12 +52,12 @@ class HomeViewModelTest {
     fun getValueOfConvertedCurrencyFromRepo(){
         runBlocking {
             //Arrange
-            val expected = ConvertCurrencyResponse(true, "2023-07-24", 3.25)
-            whenever(repo.convertBetweenCurrencies("EGP", "USD", 100)).thenReturn(
-                flow { emit(expected) }
+            val expected = "110.82"
+            whenever(repo.convertBetweenCurrencies("EUR", "USD")).thenReturn(
+                flow { emit(1.108206) }
             )
             //Act
-            viewModel.convertBetweenCurrencies("EGP", "USD", 100)
+            viewModel.convertBetweenCurrencies("EUR", "USD", 100.0)
             //Assert
             assertEquals(HomeUiState.Success(expected), viewModel.uiState.getValueForTest())
         }
@@ -69,11 +68,11 @@ class HomeViewModelTest {
         runBlocking {
             //Arrange
             val exception = NetworkException("Please check your Internet connection")
-            whenever(repo.convertBetweenCurrencies("EGP", "USD", 100)).thenReturn(
+            whenever(repo.convertBetweenCurrencies("EGP", "USD")).thenReturn(
                 flow { throw exception }
             )
             //Act
-            viewModel.convertBetweenCurrencies("EGP", "USD", 100)
+            viewModel.convertBetweenCurrencies("EGP", "USD", 100.0)
             //Assert
             assertEquals(UiState.Error(exception.message ?: ""), viewModel.uiState.getValueForTest())
         }
