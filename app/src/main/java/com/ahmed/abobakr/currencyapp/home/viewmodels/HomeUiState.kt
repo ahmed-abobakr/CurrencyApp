@@ -6,6 +6,4 @@ import com.ahmed.abobakr.currencyapp.home.data.ConvertCurrencyResponse
 sealed class HomeUiState: UiState() {
 
     data class Success(val result: ConvertCurrencyResponse): UiState()
-
-     class None: UiState()
 }
