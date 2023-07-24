@@ -1,4 +1,4 @@
-package com.ahmed.abobakr.currencyapp.home
+package com.ahmed.abobakr.currencyapp.home.views
 
 import android.os.Bundle
 import android.view.LayoutInflater
