@@ -4,8 +4,7 @@ import android.content.pm.ActivityInfo
 import android.view.inputmethod.EditorInfo
 import androidx.test.espresso.Espresso.onData
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.action.ViewActions.click
-import androidx.test.espresso.action.ViewActions.typeText
+import androidx.test.espresso.action.ViewActions.*
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.ActivityScenarioRule
@@ -67,8 +66,8 @@ class HomeTest {
         onView(withId(R.id.spinnerTo)).perform(click())
         onData(allOf(instanceOf(String::class.java))).atPosition(2).perform(click())
 
-        onView(withId(R.id.editFrom)).perform(typeText("100"))
-
+        onView(withId(R.id.editFrom)).perform(typeText("100")).perform(pressImeActionButton())
+        Thread.sleep(1000)
         onView(withId(R.id.editTo)).check(matches(withText("3.25")))
     }
 
