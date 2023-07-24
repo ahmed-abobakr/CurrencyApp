@@ -43,10 +43,27 @@ class HomeFragment: BaseFragment<HomeViewModel>() {
 
         binding.editFrom.setOnEditorActionListener { _, actionId, _ ->
             if(actionId == EditorInfo.IME_ACTION_DONE){
-                viewModel.convertBetweenCurrencies(binding.spinnerFrom.selectedItem.toString(), binding.spinnerTo.selectedItem.toString(),
-                            binding.editFrom.text.toString().toDouble())
+                if(binding.spinnerFrom.selectedItemPosition != 0 && binding.spinnerTo.selectedItemPosition != 0) {
+                    viewModel.convertBetweenCurrencies(
+                        binding.spinnerFrom.selectedItem.toString(),
+                        binding.spinnerTo.selectedItem.toString(),
+                        binding.editFrom.text.toString().toDouble()
+                    )
+                }else {
+                    Toast.makeText(requireContext(), getString(R.string.error_selection_currencies), Toast.LENGTH_LONG).show()
+                }
             }
             false
+        }
+
+        binding.btnSwipe.setOnClickListener {
+            if(binding.spinnerFrom.selectedItemPosition != 0 && binding.spinnerTo.selectedItemPosition != 0) {
+                val selectedFromPosition = binding.spinnerFrom.selectedItemPosition
+                binding.spinnerFrom.setSelection(binding.spinnerTo.selectedItemPosition)
+                binding.spinnerTo.setSelection(selectedFromPosition)
+            }else {
+                Toast.makeText(requireContext(), getString(R.string.error_selection_currencies), Toast.LENGTH_LONG).show()
+            }
         }
     }
 

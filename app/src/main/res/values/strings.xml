@@ -3,6 +3,7 @@
     <string name="swipe_button">Swipe Button</string>
     <string name="from_currency_hint">1</string>
     <string name="details">Details</string>
+    <string name="error_selection_currencies">Please select From and To Currency</string>
 
     <array name="currencies_From">
         <item>From</item>
