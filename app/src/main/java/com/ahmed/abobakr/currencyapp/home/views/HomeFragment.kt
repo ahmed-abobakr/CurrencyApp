@@ -8,6 +8,7 @@ import android.view.inputmethod.EditorInfo
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.ahmed.abobakr.currencyapp.R
 import com.ahmed.abobakr.currencyapp.base.BaseFragment
 import com.ahmed.abobakr.currencyapp.base.UiState
@@ -65,6 +66,14 @@ class HomeFragment: BaseFragment<HomeViewModel>() {
                 Toast.makeText(requireContext(), getString(R.string.error_selection_currencies), Toast.LENGTH_LONG).show()
             }
         }
+
+        binding.btnDetails.setOnClickListener {
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToDetailsFragment(
+                binding.spinnerFrom.selectedItem.toString(),
+                binding.spinnerTo.selectedItem.toString()
+            ))
+        }
+
     }
 
     override fun render(state: UiState) {
