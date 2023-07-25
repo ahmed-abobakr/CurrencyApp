@@ -31,4 +31,8 @@ class HomeViewModel @Inject constructor(private val repo: HomeRepository): BaseV
         val result = value * amount
         return decimalFormat.format(result)
     }
+
+    fun clearUIStatValue(){
+        uiState.value = UiState.None
+    }
 }

@@ -68,6 +68,7 @@ class HomeFragment: BaseFragment<HomeViewModel>() {
         }
 
         binding.btnDetails.setOnClickListener {
+            viewModel.clearUIStatValue()
             findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToDetailsFragment(
                 binding.spinnerFrom.selectedItem.toString(),
                 binding.spinnerTo.selectedItem.toString()
