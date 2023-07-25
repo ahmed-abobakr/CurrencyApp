@@ -1,5 +1,6 @@
 package com.ahmed.abobakr.currencyapp
 
+import android.content.pm.ActivityInfo
 import android.view.View
 import android.view.ViewGroup
 import androidx.test.espresso.Espresso.onData
@@ -41,6 +42,21 @@ class DetailsTest {
         onView(allOf(withId(R.id.tvBase), isDescendantOfA(nthChildOf(withId(R.id.rvOtherCurrencies), 0))))
             .check(matches(isDisplayed()))
             .check(matches(withText("1.10862")))
+    }
+
+    @Test
+    fun displayDesignScreenLandscapeTest(){
+        mActivityRule.scenario.onActivity { activity ->
+            activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+        }
+
+        navigateToDetailsScreen()
+        assertDisplayed(R.id.chart)
+        Thread.sleep(1000)
+        assertDisplayed(R.id.rvHistorical)
+        assertRecyclerViewItemCount(R.id.rvHistorical, 3)
+        assertDisplayed(R.id.rvOtherCurrencies)
+        assertRecyclerViewItemCount(R.id.rvOtherCurrencies, 10)
 
     }
 
