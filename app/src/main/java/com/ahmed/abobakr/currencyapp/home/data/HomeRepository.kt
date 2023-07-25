@@ -9,7 +9,6 @@ class HomeRepository @Inject constructor(private val api: HomeApi, private val m
 
     suspend fun convertBetweenCurrencies(from: String, to: String): Flow<Double>{
         return flow {
-            //emit(mapper.invoke(api.convertBetweenCurrencies(from, to), from))
             val response = networkHandler<LatestCurrencyChangeResponse> { api.convertBetweenCurrencies(from, to) }
                 emit(mapper.invoke(response as LatestCurrencyChangeResponse, to))
         }

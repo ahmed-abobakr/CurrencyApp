@@ -1,5 +1,7 @@
 package com.ahmed.abobakr.currencyapp.base
 
+import com.ahmed.abobakr.currencyapp.details.data.BaseCurrencyMapper
+import com.ahmed.abobakr.currencyapp.details.data.DetailsApi
 import com.ahmed.abobakr.currencyapp.home.data.ConvertCurrencyMapper
 import com.ahmed.abobakr.currencyapp.home.data.HomeApi
 import dagger.Module
@@ -23,8 +25,13 @@ class AppModule {
     fun provideConvertCurrenctMapper() = ConvertCurrencyMapper()
 
     @Provides
+    fun provideBaseCurrencyConvertMapper() = BaseCurrencyMapper()
+
+    @Provides
     fun provideHomeAPI(retrofit: Retrofit): HomeApi = retrofit.create(HomeApi::class.java)
 
+    @Provides
+    fun provideDetailsAPI(retrofit: Retrofit): DetailsApi = retrofit.create(DetailsApi::class.java)
 
     @Provides
     fun retrofit() = Retrofit.Builder()

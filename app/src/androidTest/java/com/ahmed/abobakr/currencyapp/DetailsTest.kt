@@ -30,16 +30,17 @@ class DetailsTest {
     fun displayDesignScreenTest(){
         navigateToDetailsScreen()
         assertDisplayed(R.id.chart)
+        Thread.sleep(1000)
         assertDisplayed(R.id.rvHistorical)
         assertRecyclerViewItemCount(R.id.rvHistorical, 3)
-        onView(allOf(withId(R.id.tvDay), isDescendantOfA(nthChildOf(withId(R.id.rvHistorical), 1))))
+        onView(allOf(withId(R.id.tvBase), isDescendantOfA(nthChildOf(withId(R.id.rvHistorical), 0))))
             .check(matches(isDisplayed()))
-            .check(matches(withText("1.11")))
+            .check(matches(withText("1.10628")))
         assertDisplayed(R.id.rvOtherCurrencies)
         assertRecyclerViewItemCount(R.id.rvOtherCurrencies, 10)
-        onView(allOf(withId(R.id.tvDay), isDescendantOfA(nthChildOf(withId(R.id.rvOtherCurrencies), 0))))
+        onView(allOf(withId(R.id.tvBase), isDescendantOfA(nthChildOf(withId(R.id.rvOtherCurrencies), 0))))
             .check(matches(isDisplayed()))
-            .check(matches(withText("1.11")))
+            .check(matches(withText("1.10862")))
 
     }
 

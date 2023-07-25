@@ -56,10 +56,16 @@ open class BaseRepository {
 
     private fun getErrorFrom(throwable: HttpException, UNKNOWN_ERROR: String): String {
         return try {
-            Gson().fromJson(
+            val baseResponse = Gson().fromJson(
                 throwable.response()?.errorBody()?.string(),
                 BaseResponse::class.java
-            ).error?.info ?: ""
+            )
+            val errorMessage = when {
+                !baseResponse?.error?.info.equals("null", true) -> baseResponse?.error?.info
+                !baseResponse?.error?.type.equals("null", true) -> baseResponse?.error?.type
+                else -> ""
+            }
+            return errorMessage ?: ""
         } catch (exception: Exception) {
             exception.printStackTrace()
             UNKNOWN_ERROR
